@@ -1,0 +1,39 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<title>Touchboard</title>
+	<script src="javascripts/jquery.js"></script>
+	<script src="javascripts/superclass.js"></script>
+	<script src="javascripts/renoir.js"></script>
+	<script type="text/javascript" charset="utf-8">
+	 $(function(){
+	   renoir = new Renoir("#canvas", {background:"rgb(200,0,0)"});	   
+	   rect = new Renoir.Rectangle(100, 100, {background:"rgba(0, 0, 200, 0.5)"});
+	   circ = new Renoir.Circle(100, {background:"rgba(100, 200, 0, 0.5)"});
+	   circ.addForce(new Renoir.Vector(10, 0))
+     renoir.addChild(rect);
+     renoir.addChild(circ);
+     renoir.addForce(new Renoir.Vector(0, 3));
+     
+     rect2 = new Renoir.Rectangle(100, 100, {
+       x: 100, 
+       background:"rgba(0, 200, 200, 0.5)",
+       fixed: true
+     });
+     rect2.addForce(new Renoir.Vector(0, 50))
+     renoir.addChild(rect2);
+     
+     img = new Renoir.Image(200, 200, "http://www.travelblog.org/Wallpaper/pix/tb_mecsek_yellow_flower.jpg", {x: 200});
+     renoir.addChild(img);
+     
+     // TODO:
+     // renoir.collidable(rect, rec2);
+	 });
+	</script>
+</head>
+<body>
+  
+  <canvas width="500px" height="500px" id="canvas">Unsupported</canvas>
+</body>
+</html>
